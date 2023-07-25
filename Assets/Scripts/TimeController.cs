@@ -1,31 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TimeController : MonoBehaviour
 {
-    public TimeManager timeManager;
-    public Text minutesShow;
-    public Text secondsShow;
-    private int minutesNumber;
-    private int secondsNumber;
-
-    public void ShowTheNumbers()
+    // Start is called before the first frame update
+    void Start()
     {
-        minutesShow.text = minutesNumber.ToString();
-        secondsShow.text = secondsNumber.ToString();
+        
     }
 
-    public int MinutesNumber
+    // Update is called once per frame
+    void Update()
     {
-        get {return minutesNumber;}
-        set {minutesNumber = value;}
+        
     }
-    public int SecondsNumber
-    {
-        get { return secondsNumber; }
-        set { secondsNumber = value; }
-    }
-
 }

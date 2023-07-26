@@ -6,29 +6,57 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public FinishPointController finishPoint;
-    //nanti time controller disini
+    public TimeManager timeManager;
+    private bool gameAlreadyOver;
 
-    private void Update()
+    void Update()
+    {
+        CheckPlayerStatus();
+    }
+
+    void CheckPlayerStatus()
     {
         if (finishPoint.PlayerAlreadyFinish == 1)
         {
+            finishPoint.PlayerAlreadyFinish = 0;
             LevelCompleted();
         }
-    }
-    void LevelCompleted ()
-    {
-        finishPoint.PlayerAlreadyFinish = 0;
-        LevelCompletedScene();
-    }
-    void GameOver()
-    {
-        Debug.Log("Game Over");
-        SceneManager.LoadScene("GameOver");
+        if (timeManager.TimeIsUp == true)
+        {
+            timeManager.TimeIsUp = false;
+            GameOver();
+        }
     }
 
-    void LevelCompletedScene()
+    void LevelCompleted ()
     {
-        SceneManager.LoadScene("Finish");
+        gameAlreadyOver = true;
+        NextSceneLoader(0);
+    }
+
+    void GameOver()
+    {
+        gameAlreadyOver = true;
+        NextSceneLoader(1);
+    }
+
+    void NextSceneLoader(int messageCode)
+    {
+        //Finish Scene = 0
+        //Game Over/Dead Scene = 1
+        if (messageCode == 0)
+        {
+            SceneManager.LoadScene("Finish");
+        }
+        if (messageCode == 1)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+    }
+    
+    public bool GameAlreadyOver
+    {
+        get { return gameAlreadyOver; }
+        set { gameAlreadyOver = value; }
     }
 }
-//reupload purpose 

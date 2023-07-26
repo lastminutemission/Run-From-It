@@ -10,6 +10,7 @@ public class FinishPointController : MonoBehaviour
 	{
 		if (whosComing == thePlayer)
 		{
+			Debug.Log("Sampe finish");
 			playerAlreadyFinish = 1;
 		}
 	}

@@ -104,4 +104,3 @@ public class TimeManager : MonoBehaviour
         set { timeIsUp = value; }
     }
 }
-//reupload purpose 
